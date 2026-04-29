@@ -1,0 +1,298 @@
+.patients-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.patients-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patients-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.patients-subtitle {
+  margin: 8px 0 0;
+  font-size: 17px;
+  color: #667085;
+}
+
+.patients-add-button {
+  height: 52px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 8px;
+  background: #8e3aa8;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(122, 44, 143, 0.28);
+}
+
+.patients-risk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.patients-risk-card {
+  min-height: 116px;
+  border-radius: 10px;
+  padding: 24px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.12);
+}
+
+.patients-risk-card p {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+.patients-risk-card h2 {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.patients-risk-card.vital {
+  background: #e62129;
+}
+
+.patients-risk-card.urgent {
+  background: #ffc021;
+  color: #111827;
+}
+
+.patients-risk-card.stable {
+  background: #14b886;
+}
+
+.patients-list-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.05);
+}
+
+.patients-filters {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.patients-search {
+  height: 56px;
+  border: 1px solid #d9dee7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  color: #667085;
+}
+
+.patients-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  color: #111827;
+}
+
+.patients-search input::placeholder {
+  color: #252525;
+}
+
+.patients-order-select {
+  height: 56px;
+  border: 1px solid #d9dee7;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 15px;
+  background: white;
+  color: #111827;
+}
+
+.patients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.patient-card {
+  border-radius: 10px;
+  padding: 24px 30px;
+  border: 1px solid #e5e7eb;
+  border-left-width: 8px;
+}
+
+.patient-card.riesgo-vital {
+  background: #fff1f1;
+  border-left-color: #e62129;
+}
+
+.patient-card.urgente {
+  background: #fffbe8;
+  border-left-color: #ffc021;
+}
+
+.patient-card.estable {
+  background: #effcf7;
+  border-left-color: #14b886;
+}
+
+.patient-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.patient-main-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.patient-risk-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.patient-card.riesgo-vital .patient-risk-icon {
+  background: #e62129;
+  color: white;
+}
+
+.patient-card.urgente .patient-risk-icon {
+  background: #ffc021;
+  color: #111827;
+}
+
+.patient-card.estable .patient-risk-icon {
+  background: #14b886;
+  color: white;
+}
+
+.patient-main-info h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #111827;
+}
+
+.patient-main-info p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 15px;
+}
+
+.patient-main-info span {
+  margin: 0 12px;
+}
+
+.patient-risk-badge {
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.patient-risk-badge.riesgo-vital {
+  background: #e62129;
+  color: white;
+}
+
+.patient-risk-badge.urgente {
+  background: #ffc021;
+  color: #111827;
+}
+
+.patient-risk-badge.estable {
+  background: #14b886;
+  color: white;
+}
+
+.patient-alert-box {
+  border: 2px solid #ffc021;
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: white;
+  margin-bottom: 16px;
+}
+
+.patient-alert-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #b45309;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.patient-alert-box p {
+  margin: 0;
+  padding-left: 28px;
+  color: #b45309;
+  font-size: 16px;
+}
+
+.patient-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.patient-metric {
+  background: white;
+  border: 1px solid #d9dee7;
+  border-radius: 8px;
+  padding: 14px 12px;
+}
+
+.patient-metric span {
+  display: block;
+  font-size: 14px;
+  color: #667085;
+  margin-bottom: 8px;
+}
+
+.patient-metric strong {
+  font-size: 18px;
+  font-weight: 500;
+  color: #111827;
+}
+
+@media (max-width: 1024px) {
+  .patients-risk-grid,
+  .patient-metrics-grid,
+  .patients-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .patients-header,
+  .patient-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

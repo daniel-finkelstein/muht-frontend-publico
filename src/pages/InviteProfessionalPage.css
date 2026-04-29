@@ -1,0 +1,80 @@
+.invite-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: #f4f6f8;
+}
+
+.invite-card {
+  max-width: 640px;
+  padding: 28px;
+}
+
+.invite-card h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.invite-subtitle {
+  margin: 8px 0 24px;
+  color: #697386;
+}
+
+.invite-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.invite-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 14px;
+  color: #333;
+}
+
+.invite-form input {
+  color: black;
+  height: 42px;
+  border: 1px solid #dfe4ea;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.invite-form button {
+  margin-top: 8px;
+  height: 44px;
+  background: #8f3ca0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.invite-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.invite-error {
+  color: #b42318;
+  margin: 0;
+}
+
+.invite-success {
+  color: #16794c;
+  margin: 0;
+}
+
+.invite-link-box {
+  background: #f4eaf6;
+  border-radius: 8px;
+  padding: 12px;
+  overflow-wrap: anywhere;
+}
+
+.invite-link-box p {
+  margin: 0 0 6px;
+  font-weight: 600;
+}

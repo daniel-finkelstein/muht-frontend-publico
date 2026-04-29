@@ -1,0 +1,384 @@
+.dashboard-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f7f9fc;
+}
+
+.dashboard-sidebar {
+  width: 260px;
+  background: #fdfbff;
+  border-right: 1px solid #e9eef5;
+  flex-shrink: 0;
+}
+
+.dashboard-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dashboard-topbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dashboard-main-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.dashboard-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  /* border-bottom: 1px solid #e9eef5; */
+}
+
+.dashboard-sidebar-logo {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dashboard-sidebar-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.dashboard-sidebar-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1313cf;
+  margin: 0;
+}
+
+.dashboard-sidebar-subtitle {
+  font-size: 12px;
+  color: #000000;
+  /* margin: 4px 0 0; */
+}
+
+.dashboard-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 12px;
+}
+
+.dashboard-sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #374151;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dashboard-sidebar-link:hover {
+  background: #f3f6fb;
+}
+
+.dashboard-sidebar-link.active {
+  background: #ebdef5;
+  color: #792f8e;
+}
+
+.dashboard-topbar-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 0;
+}
+
+.dashboard-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-topbar-button {
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: white;
+  color: #374151;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dashboard-topbar-button:hover {
+  background: #f9fafb;
+}
+
+.dashboard-topbar-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.dashboard-topbar-select-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 580px;
+}
+
+.dashboard-topbar-select {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 15px;
+}
+
+.dashboard-patient-search {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+}
+
+.dashboard-patient-search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 15px;
+  outline: none;
+}
+
+.dashboard-patient-search-input:focus {
+  border-color: #8e44ad;
+  box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.12);
+}
+
+.dashboard-patient-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12);
+}
+
+.dashboard-patient-option {
+  width: 100%;
+  min-height: 52px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dashboard-patient-option span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.dashboard-patient-option small {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Riesgo vital */
+.dashboard-patient-option.riesgo-vital {
+  background: #fff1f1;
+}
+
+.dashboard-patient-option.riesgo-vital small {
+  color: #e62129;
+}
+
+/* Urgente */
+.dashboard-patient-option.urgente {
+  background: #fff8db;
+}
+
+.dashboard-patient-option.urgente small {
+  color: #b77900;
+}
+
+/* Estable */
+.dashboard-patient-option.estable {
+  background: #effcf7;
+}
+
+.dashboard-patient-option.estable small {
+  color: #0f9f72;
+}
+
+.dashboard-patient-option:hover {
+  border-color: #d0d5dd;
+  filter: brightness(0.98);
+}
+
+.dashboard-patient-search {
+  position: relative;
+  width: 360px;
+}
+
+.dashboard-patient-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+.dashboard-sidebar-section {
+  margin-top: 24px;
+}
+
+.dashboard-sidebar-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  background-color: #a562e4d8;;
+  padding: 2px;
+  margin-bottom: 16px;
+  margin: 1px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dashboard-register-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: #003a8f;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quicklog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.32);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quicklog-panel {
+  width: 420px;
+  max-width: 100%;
+  height: 100%;
+  background: white;
+  padding: 24px;
+  box-shadow: -12px 0 32px rgba(15, 23, 42, 0.18);
+  overflow-y: auto;
+}
+
+.quicklog-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.quicklog-header h2 {
+  margin: 0;
+}
+
+.quicklog-header p {
+  margin: 4px 0 0;
+  color: #6b7280;
+}
+
+.quicklog-close {
+  border: none;
+  background: #f3f4f6;
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.quicklog-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.quicklog-section h3 {
+  margin-top: 0;
+}
+
+.quicklog-section label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.quicklog-section input {
+  border: 1px solid #d1d5db;
+  color: black;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.quicklog-section button {
+  width: 100%;
+  border: none;
+  background: #003a8f;
+  color: white;
+  padding: 11px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quicklog-section.disabled {
+  opacity: 0.55;
+  background: #f9fafb;
+}
+
+.quicklog-message {
+  background: #ecfdf5;
+  color: #047857;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+}

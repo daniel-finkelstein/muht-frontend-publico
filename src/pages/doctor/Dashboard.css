@@ -1,0 +1,399 @@
+.dashboard-toolbar-row {
+  display: flex;
+  gap: 16px;
+  align-items: end;
+}
+
+.dashboard-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 280px;
+}
+
+.dashboard-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.dashboard-select {
+  height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 15px;
+  background: #ffffff;
+  color: #111827;
+}
+
+.dashboard-title {
+  color: #111827;
+}
+
+.dashboard-subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.dashboard-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.dashboard-chart-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.dashboard-range-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 14px;
+  background: #f3f4f6;
+}
+
+.dashboard-range-button {
+  min-width: 88px;
+  height: 38px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dashboard-range-button:hover {
+  background: #e5e7eb;
+}
+
+.dashboard-range-button.active {
+  background: #003a8f;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 58, 143, 0.2);
+}
+
+.dashboard-bottom-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard-upcoming-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.dashboard-upcoming-header {
+  padding: 24px 24px 18px;
+  border-bottom: 1px solid #e9eef5;
+}
+
+.dashboard-section-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.dashboard-upcoming-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-upcoming-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e9eef5;
+}
+
+.dashboard-upcoming-item:last-child {
+  border-bottom: none;
+}
+
+.dashboard-upcoming-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dashboard-upcoming-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #8e44ad;
+  flex-shrink: 0;
+}
+
+.dashboard-upcoming-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.dashboard-upcoming-date {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #667085;
+}
+
+.dashboard-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.dashboard-status-badge.pending {
+  background: #f4edf7;
+  color: #8e44ad;
+}
+
+.dashboard-status-badge.scheduled {
+  background: #f3f4f6;
+  color: #667085;
+}
+
+.dashboard-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.dashboard-insight-card {
+  min-height: 108px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-insight-card.success {
+  border-color: #d7c3e8;
+  background: #fcfbfe;
+}
+
+.dashboard-insight-card.warning {
+  border-color: #f2d18b;
+  background: #fffdf8;
+}
+
+.dashboard-insight-card.achievement {
+  border-color: #d7c3e8;
+  background: #fcfbfe;
+}
+
+.dashboard-insight-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.dashboard-insight-text {
+  margin: 0;
+  font-size: 14px;
+  color: #667085;
+  line-height: 1.4;
+}
+
+.dashboard-top-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.dashboard-toolbar-card {
+  min-height: 170px;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-appointment-card {
+  min-height: 170px;
+  background: linear-gradient(135deg, #8a2da3 0%, #8e44ad 100%);
+  border: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dashboard-appointment-header {
+  margin-bottom: 20px;
+}
+
+.dashboard-appointment-label {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.dashboard-appointment-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dashboard-appointment-date {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.dashboard-appointment-time {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.dashboard-appointment-info {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.dashboard-appointment-doctor {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dashboard-appointment-location {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.88;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-top-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card.dashboard-next-appointment-card {
+  min-height: 210px;
+  background: linear-gradient(135deg, #8e3aa8 0%, #7a2c8f 100%);
+  border: none;
+  color: #ffffff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(122, 44, 143, 0.22);
+}
+
+.dashboard-next-appointment-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-next-appointment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.dashboard-next-appointment-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dashboard-next-appointment-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dashboard-next-appointment-date {
+  margin: 0;
+  font-size: 38px;
+  line-height: 1.05;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.dashboard-next-appointment-subtitle {
+  margin: 0;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dashboard-next-appointment-doctor-box {
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.dashboard-next-appointment-doctor {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dashboard-next-appointment-location {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.dashboard-next-appointment-button {
+  margin-top: 6px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #7a2c8f;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.dashboard-next-appointment-button:hover {
+  opacity: 0.92;
+}

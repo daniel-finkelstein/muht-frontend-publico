@@ -1,0 +1,182 @@
+.surgery-page {
+  min-height: 100vh;
+  background: #f4f6f8;
+  padding: 24px;
+}
+
+.surgery-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.surgery-page-header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #333;
+}
+
+.surgery-page-header p {
+  margin: 8px 0 0;
+  color: #697386;
+  font-size: 15px;
+}
+
+.surgery-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 22px;
+}
+
+.surgery-info-card,
+.post-op-notes-card {
+  padding: 24px;
+}
+
+.surgery-info-card h3,
+.post-op-notes-card h3 {
+  margin: 0 0 22px;
+  font-size: 21px;
+  color: #333;
+}
+
+.surgery-info-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.surgery-info-item {
+  border: 1px solid #dfe4ea;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+}
+
+.surgery-info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f4eaf6;
+  color: #8f3ca0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.surgery-info-item span {
+  color: #697386;
+  font-size: 13px;
+}
+
+.surgery-info-item p {
+  margin: 4px 0 0;
+  color: #333;
+  font-size: 15px;
+}
+
+.basic-instructions {
+  border-top: 1px solid #dfe4ea;
+  padding-top: 22px;
+}
+
+.basic-instructions h4 {
+  margin: 0 0 14px;
+  font-size: 17px;
+  color: #333;
+}
+
+.basic-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #333;
+}
+
+.basic-instructions li {
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.post-op-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.post-op-note {
+  display: flex;
+  gap: 14px;
+  border: 1px solid #dfe4ea;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+}
+
+.post-op-note-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  background: #f4eaf6;
+  color: #8f3ca0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-op-note h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.post-op-note p {
+  margin: 7px 0 0;
+  color: #697386;
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.status-badge {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.status-badge.active {
+  background: #f4eaf6;
+  color: #9c4aa7;
+}
+
+.status-badge.success {
+  background: #e8f7ee;
+  color: #229954;
+}
+
+.status-badge.warning {
+  background: #fff3df;
+  color: #f59e0b;
+}
+
+.status-badge.default {
+  background: #eef0f3;
+  color: #555;
+}
+
+@media (max-width: 900px) {
+  .surgery-page-header {
+    align-items: flex-start;
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .surgery-grid,
+  .surgery-info-list {
+    grid-template-columns: 1fr;
+  }
+}

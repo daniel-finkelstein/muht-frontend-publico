@@ -1,0 +1,161 @@
+.patient-profile-page {
+  padding: 24px;
+  background: #f4f6f8;
+  min-height: 100vh;
+}
+
+.patient-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.patient-header-avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: #8f3ca0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.patient-header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.patient-header h2 {
+  color: rgb(134, 134, 134);
+  margin: 6px 0;
+  font-size: 22px;
+}
+
+.patient-header p {
+  margin: 0;
+  color: #697386;
+}
+
+.patient-status {
+  margin-left: auto;
+  background: #f4eaf6;
+  color: #9c4aa7;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.mini-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.mini-stat-card {
+  padding: 20px;
+}
+
+.mini-stat-card p {
+  margin: 0;
+  color: #697386;
+  font-size: 14px;
+}
+
+.mini-stat-card h3 {
+  margin: 8px 0;
+  font-size: 26px;
+}
+
+.mini-stat-card span {
+  color: #697386;
+  font-size: 13px;
+}
+
+.patient-profile-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+}
+
+.patient-info-card,
+.clinical-summary-card {
+  padding: 24px;
+}
+
+.patient-info-card h3,
+.clinical-summary-card h3 {
+  margin: 0 0 22px;
+  font-size: 20px;
+}
+
+.patient-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #697386;
+}
+
+.info-row span,
+.data-field span {
+  color: #697386;
+  font-size: 13px;
+}
+
+.info-row p,
+.data-field p {
+  margin: 4px 0 0;
+  color: #333;
+  font-size: 15px;
+}
+
+.clinical-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 60px;
+}
+
+@media (max-width: 900px) {
+  .patient-header {
+    align-items: flex-start;
+  }
+
+  .mini-stats-row,
+  .patient-profile-grid,
+  .clinical-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-status {
+    margin-left: 0;
+  }
+}
+
+.mini-stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.mini-stat-icon-wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.mini-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

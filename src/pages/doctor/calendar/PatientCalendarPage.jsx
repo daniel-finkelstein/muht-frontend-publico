@@ -1,31 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Calendar.css';
 
-import { getUserWithRole } from '../../../services/userService';
+import { useUser } from "../../../services/UserContext";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { EventCreator, EventCard } from './CalendarHelper';
+
 export default function PatientCalendarPage() {
-  const [userProfile, setUserProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { userProfile, loading } = useUser();
   const [error, setError] = useState(null);
   const { getAccessTokenSilently } = useAuth0();
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const token = await getAccessTokenSilently();
-        const data = await getUserWithRole(token);
-        setUserProfile(data);
-      } catch (err) {
-        console.error("Error al obtener el perfil:", err);
-        setError("No se pudo cargar el perfil. Reintenta iniciar sesión.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, [getAccessTokenSilently]);
 
   const [dates, setDates] = useState([
     { id: 1, title: "Control Nutricional", date: "02-05-2026", time: "10:30", duration: "30 min", location: "Clínica Alemana Vitaucura", patient: "Roberto Roberts", doctor: "Dr. Gregorio Casa", status: "Pendiente", reminder: "Ayuno de 12 horas previas" },
@@ -52,33 +36,10 @@ export default function PatientCalendarPage() {
     return (
       <div className="calendar-events">
         {eventsList.map((event) => (
-            <div key={event.id} className="calendar-event">
-              <div className="event-info">
-                <div className="event-left-info">
-                  <div className="event-date">{event.date}</div>
-                  <div className="event-time">{event.time}</div>
-                </div>
-                <div className="event-right-info">
-                  <div className="event-title"><strong>{event.title}</strong></div>
-                  <div className="event-duration"><strong>Duración:</strong> {event.duration}</div>
-                  <div className="event-right-subinfo">
-                    <div className="event-location"><strong>Lugar:</strong> {event.location}</div>
-                    <div className="event-doctor"><strong>Médico:</strong> {event.doctor}</div>
-                  </div>
-                </div>
-              </div>
-              {event.status === 'Pendiente' ? (renderReminder(event.reminder, event.status)) : null }
-            </div>
+            <EventCard event={event} role={userProfile.role} />
         ))}
       </div>
     );
-  }
-
-  const renderReminder = (reminder, status) => {
-    if (reminder == "" || status != "Pendiente") { 
-      return;
-    }
-    return (<div className="event-reminder"><strong>Recordatorio:</strong> {reminder}</div>);
   }
 
   if (loading) return <div className="messages-page">Cargando perfil...</div>;

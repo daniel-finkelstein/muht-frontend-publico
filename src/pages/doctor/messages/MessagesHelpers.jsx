@@ -49,7 +49,7 @@ export function MessageThread({ thread, onReply }) {
       
       <div className="thread-messages">
         {thread.messages.map((msg) => (
-          <div key={msg.id} className={`mail-card ${msg.senderRole === 'Doctor' ? 'from-doctor' : 'from-patient'}`}>
+          <div key={msg.id} className={`mail-card ${msg.senderRole === 'doctor' ? 'from-doctor' : 'from-patient'}`}>
             <div className="mail-meta">
               <strong>{msg.senderName}</strong> <span>{msg.time}</span>
             </div>

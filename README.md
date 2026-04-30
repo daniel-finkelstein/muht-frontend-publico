@@ -22,12 +22,3 @@ La lógica general es que el usuario interactua con la UI, el frontend le pide l
 Para la autenticación se usa Auth0 para manejar el login y la seguridad.
 
 La app se adapta dependiendo del rol del usuario. El paciente, doctor y superadmin tienen distintas vistas y capacidades
-
-
-Uso de Inteligencia Artificial:
-
-Durante el desarrollo del proyecto hemos usado herramientas de IA como apoyo (para debuggear, hacer distintas preguntas o como apoyo para resolver problemas)
-
-Todas las decisiones fueron tomadas y entendidas por el equipo
-
-La IA se uso como herramienta de apoyo, no reemplazo del proceso de desarrollo

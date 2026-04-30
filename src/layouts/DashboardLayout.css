@@ -382,3 +382,19 @@
   padding: 10px 12px;
   margin-bottom: 16px;
 }
+
+.logout-button {
+  background: #ef4444;
+  color: white;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}

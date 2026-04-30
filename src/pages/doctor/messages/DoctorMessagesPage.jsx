@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Messages.css';
 
-import { getUserWithRole } from '../../../services/userService';
+import { useUser } from "../../../services/UserContext";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { MessageComposer, MessageThread } from './MessagesHelpers';
 
 export default function DoctorMessagesPage() {
-  const [user, setUser] = useState({ name: "Dr Gregorio Casa", role: "Doctor" });
+  const { userProfile, loading } = useUser();
 
   const doctorContacts = [
     { id: 201, name: "Roberto Roberts", role: "Paciente" },
@@ -78,7 +78,7 @@ export default function DoctorMessagesPage() {
       <h1>Bandeja de Entrada</h1>
 
       <MessageComposer 
-        contacts={user.role === 'Doctor' ? doctorContacts : patientContacts} 
+        contacts={userProfile.role === 'professional' ? doctorContacts : patientContacts} 
         onSend={handleNewMessage} 
       />
 

@@ -20,39 +20,38 @@ export const UserProvider = ({ children }) => {
 
     try {
       const token = await getAccessTokenSilently();
-
-      const baseUser = await apiRequest("/api/auth/sync", {
-        method: "POST",
+      const response = await apiRequest("/api/auth/me", {
+        method: "GET",
         token,
-        body: {
-          email: auth0User.email,
-          full_name: auth0User.name,
-        },
       });
-
+      const baseUser = response.user;
       let fullProfile = { ...baseUser };
+      console.log("Perfil base cargado:", fullProfile);
 
-      try {
+      if (baseUser.role === "patient") {
         const patientData = await apiRequest("/api/patient/profile", {
           method: "GET",
           token,
         });
+        fullProfile = { ...fullProfile, ...patientData };
+        console.log("Perfil de paciente cargado:", fullProfile);
+        
+      } else if (baseUser.role === "professional") {
+        const allProfessionals = await apiRequest("/api/professional", { method: "GET", token });
+        const myProfile = allProfessionals.find(prof => prof.id === baseUser.id);
+        if (myProfile) {
+          const professionalData = await apiRequest(`/api/professional/${myProfile.id}`, {
+            method: "GET",
+            token,
+          });
+          fullProfile = { ...fullProfile, ...professionalData };
+          console.log("Perfil profesional encontrado:", fullProfile);
+        } else {
+          console.warn("No se encontró un perfil profesional para este usuario en la lista global.");
+        }
 
-        fullProfile = {
-          ...fullProfile,
-          ...patientData,
-          role: "patient",
-        };
-
-        // console.log("Perfil de paciente cargado:", fullProfile);
-      } catch (patientError) {
-        // console.log("No es paciente. Usando rol profesional temporal.");
-
-        fullProfile = {
-          ...fullProfile,
-          role: "superadmin",
-          isMockProfessional: false,
-        };
+      } else if (baseUser.role === "superadmin") {
+        console.log("Acceso como administrador confirmado");
       }
 
       setUserProfile(fullProfile);
@@ -72,7 +71,6 @@ export const UserProvider = ({ children }) => {
       setLoading(false);
       return;
     }
-
     loadUserProfile();
   }, [auth0Loading, isAuthenticated, auth0User]);
 

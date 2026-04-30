@@ -5,28 +5,37 @@ import { patientsMock } from "../data/mock/patientsMock";
 import { Bell, User } from "lucide-react";
 import logo from "../assets/logo.png";
 import { useUser } from "../services/UserContext";
-
+import { LogOut } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { X, PlusCircle } from "lucide-react";
 import { getPatientProfile } from "../services/patientService";
 import { createWeightRecord } from "../services/weightHistoryService";
 import { createPhysicalActivity } from "../services/physicalActivityService";
 
+
+
+
 const doctorLinks = [
   { name: "Pacientes", path: "/pacientes", roles: ["professional", "superadmin"] },
   { name: "Invitar médico", path: "/admin/invitar-profesional", roles: [ "superadmin"] },
-  
 ];
 
 const sharedLinks = [
-  { name: "Notificaciones", path: "/notificaciones", roles: ["patient", "professional", "superadmin"] },
+  { name: "Notificaciones", path: "/notificaciones", roles: ["professional", "superadmin"] },
   { name: "Mensajes", path: "/mensajes", roles: ["patient", "professional", "superadmin"] },
   { name: "Calendario", path: "/calendario", roles: ["patient", "professional", "superadmin"] },
 ];
 
 const patientLinks = [
-  { name: "Panel Principal", path: "/dashboard", roles: ["patient", "professional", "superadmin"] },
-  { name: "Estadísticas", path: "/estadisticas", roles: ["patient", "professional", "superadmin"] },
+  // Paciente
+  { name: "Panel Principal", path: "/dashboard", roles: ["patient"] },
+  { name: "Estadísticas", path: "/estadisticas", roles: ["patient"] },
+
+  // Médico / superadmin 
+  { name: "Panel Principal", path: "/doctor/dashboard", roles: ["professional", "superadmin"] },
+  { name: "Estadísticas", path: "/doctor/estadisticas", roles: ["professional", "superadmin"] },
+
+  // Compartidos 
   { name: "Documentos", path: "/documentos", roles: ["patient", "professional", "superadmin"] },
   { name: "Contenido Educativo", path: "/contenido-educativo", roles: ["patient", "professional", "superadmin"] },
 ];
@@ -40,6 +49,18 @@ export default function DashboardLayout() {
 
   const navigate = useNavigate();
   const { userProfile, loading } = useUser();
+
+  const { logout } = useAuth0();
+
+    const handleLogout = () => {
+      localStorage.clear();
+
+      logout({
+        logoutParams: {
+          returnTo: window.location.origin
+        }
+      });
+    };
 
   if (loading) return <p>Cargando...</p>;
 
@@ -200,11 +221,17 @@ export default function DashboardLayout() {
                 if (userRole === "patient") {
                   navigate("/pacientes/1/perfil");
                 } else {
-                  navigate("/pacientes/1/perfil");
+                  navigate("/doctor/perfil");
                 }
               }}
             >
               <User size={20} />
+            </button>
+            <button
+              className="dashboard-topbar-button logout-button"
+              onClick={handleLogout}
+            >
+              <LogOut size={18} />
             </button>
           </div>
         </header>

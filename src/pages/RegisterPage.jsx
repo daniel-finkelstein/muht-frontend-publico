@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { User, Phone, ArrowLeft, CreditCard, CalendarDays, Shield } from "lucide-react";
 import { syncUser } from "../services/authService";
 import "./Auth.css";
+import logo from "../assets/logo.png";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -81,7 +82,9 @@ export default function RegisterPage() {
           </button>
 
           <div className="form-header">
-            <div className="form-logo">Logo app</div>
+            <div className="form-logo">
+              <img src={logo} alt="MUHT logo" />
+            </div>
             <h1 className="form-title">Completar registro</h1>
             <p className="form-subtitle">Ingresa tus datos como paciente</p>
           </div>

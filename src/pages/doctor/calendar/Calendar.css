@@ -46,7 +46,7 @@
 .event-left-info {
     display: flex;
     justify-content: flex-start;
-    gap: 8px;;   
+    gap: 8px;;  
     margin-top: 5px;
     font-size: 0.85rem;
 }
@@ -88,6 +88,9 @@
 .event-reminder {
     font-size: 0.9rem;
     color: #555;
+    background-color: #fff188;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .appointments-container {
@@ -165,6 +168,15 @@
 .event-creator-form .form-column:last-child {
     flex: 1;
     display: flex;
+}
+
+.event-creator-input {
+    padding: 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .form-row {

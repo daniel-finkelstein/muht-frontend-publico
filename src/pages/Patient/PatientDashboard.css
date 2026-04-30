@@ -1,0 +1,265 @@
+.patient-dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.patient-dashboard-header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.patient-dashboard-header p {
+  margin-top: 8px;
+  color: var(--text-muted, #64748b);
+}
+
+.patient-dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.patient-dashboard-grid.bottom {
+  align-items: start;
+}
+
+.patient-progress-card,
+.patient-checklist-card,
+.patient-appointment-card,
+.patient-quick-card {
+  padding: 24px;
+}
+
+.patient-achievement-card {
+  padding: 24px;
+  background-color: #ffcf31;
+  border:#000000;
+}
+
+.patient-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patient-card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-card-title h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.patient-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.patient-icon.blue {
+  background: #eaf3ff;
+  color: #0052a8;
+}
+
+.patient-icon.purple,
+.patient-icon.violet {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.patient-icon.orange {
+  background: #fff3d6;
+  color: #f59e0b;
+}
+
+.patient-link-button {
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.patient-progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0 20px;
+}
+
+.patient-progress-stats div {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.patient-progress-stats span,
+.patient-progress-stats small {
+  display: block;
+  color: #64748b;
+}
+
+.patient-progress-stats strong {
+  display: block;
+  margin: 8px 0 4px;
+  font-size: 28px;
+  color: #0052a8;
+}
+
+.patient-progress-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.patient-progress-footer > div:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.patient-progress-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #dbe5f1;
+  overflow: hidden;
+}
+
+.patient-progress-track div {
+  height: 100%;
+  background: #0052a8;
+}
+
+.patient-appointment-card {
+  background: linear-gradient(135deg, #7e22ce, #9333ea);
+  color: white;
+}
+
+.patient-appointment-content {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patient-appointment-content strong {
+  font-size: 24px;
+}
+
+.patient-doctor-box {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.patient-doctor-box p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.patient-doctor-box small {
+  opacity: 0.85;
+}
+
+.patient-appointment-content button,
+.patient-quick-card button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.patient-muted {
+  color: #64748b;
+}
+
+.patient-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.patient-task {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.patient-task.completed {
+  background: #ecfdf5;
+  border-color: #86efac;
+  color: #059669;
+}
+
+.patient-task-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #eef2f7;
+  color: #64748b;
+}
+
+.patient-task-icon.green {
+  background: #10b981;
+  color: white;
+}
+
+.patient-side-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.patient-achievement-content {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.patient-achievement-content strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 20px;
+}
+
+.patient-achievement-content p {
+  color: #64748b;
+}
+
+.patient-quick-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patient-quick-card h2 {
+  color: black;
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+/* .patient-quick-card button {
+  text-align: left;
+  background: #000000;
+} */
+
+@media (max-width: 1000px) {
+  .patient-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-progress-stats {
+    grid-template-columns: 1fr;
+  }
+}

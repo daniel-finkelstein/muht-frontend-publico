@@ -1,0 +1,180 @@
+.patient-stats-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.patient-stats-header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.patient-stats-header p {
+  margin-top: 8px;
+  color: #64748b;
+}
+
+.patient-stats-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.patient-stats-tabs {
+  display: flex;
+  width: fit-content;
+  background: #e9edf3;
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.patient-stats-tabs button {
+  color: black;
+  border: 0;
+  background: transparent;
+  padding: 10px 48px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.patient-stats-tabs button.active {
+  color: rgb(255, 255, 255);
+  background: rgb(25, 49, 185);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+}
+
+.patient-positive-message {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #ecfdf5;
+  border: 1px solid #86efac;
+  color: #047857;
+  font-weight: 600;
+}
+
+.patient-activity-card {
+  padding: 24px;
+}
+
+.patient-activity-card h2 {
+  margin: 0 0 8px;
+}
+
+.patient-achievements-section {
+  margin-top: 8px;
+}
+
+.patient-achievements-section .card,
+.patient-achievements-section > div {
+  padding: 24px;
+}
+
+.patient-achievements-section h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.patient-achievements-section p {
+  color: #64748b;
+}
+
+.patient-achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.patient-achievement-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+}
+
+.patient-achievement-item strong {
+  display: block;
+  margin: 12px 0 6px;
+}
+
+.patient-achievement-item span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .patient-stats-summary,
+  .patient-achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-stats-tabs {
+    width: 100%;
+  }
+
+  .patient-stats-tabs button {
+    flex: 1;
+    padding: 10px 16px;
+  }
+}
+
+.patient-range-selector {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #eef2f7;
+}
+
+.patient-range-selector button {
+  border: 0;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.patient-range-selector button.active {
+  background: white;
+  color: #7c3aed;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+}
+
+.patient-activity-chart {
+  width: 100%;
+  min-height: 320px;
+}
+
+.patient-positive-message.purple {
+  background: #f5f3ff;
+  border-color: #c4b5fd;
+  color: #6d28d9;
+}
+
+.patient-achievement-item.weight {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.patient-achievement-item.activity {
+  background: #ecfdf5;
+  border-color: #86efac;
+  color: #047857;
+}
+
+.patient-achievement-item.streak {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+}
+
+.patient-achievement-item.adherence {
+  background: #f5f3ff;
+  border-color: #c4b5fd;
+  color: #6d28d9;
+}

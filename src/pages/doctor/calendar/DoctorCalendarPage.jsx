@@ -1,129 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Calendar.css';
 
-import { getUserWithRole } from '../../../services/userService';
+import { useUser } from "../../../services/UserContext";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function EventCreator({ onCreate }) {
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [duration, setDuration] = useState("");
-  const [location, setLocation] = useState("");
-  const [patient, setPatient] = useState("");
-  const [doctor, setDoctor] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!title || !date || !time || !duration || !location || !patient || !doctor) {
-      return alert("Por favor completa todos los campos");
-    }
-    onCreate({ title, date, time, duration, location, patient, doctor });
-    setTitle("");
-    setDate("");
-    setTime("");
-    setDuration("");
-    setLocation("");
-    setPatient("");
-    setDoctor("");
-  }
-
-  return (
-    <div className="event-creator">
-      <h3>Crear Nueva Cita</h3>
-      <form onSubmit={handleSubmit} className="event-creator-form">
-        <div className="form-column">
-          <div className="form-row">
-            <input
-              placeholder="Título" 
-              value={title} 
-              onChange={(e) => setTitle(e.target.value)} 
-            />
-            <input 
-              type="date"
-              value={date} 
-              onChange={(e) => setDate(e.target.value)} 
-            />
-            <input 
-              type="time"
-              value={time} 
-              onChange={(e) => setTime(e.target.value)} 
-            />
-            <input 
-              placeholder="Duración (ej: 30 min)" 
-              value={duration} 
-              onChange={(e) => setDuration(e.target.value)} 
-            />
-          </div>
-          <div className="form-row">
-            <input 
-              placeholder="Lugar" 
-              value={location} 
-              onChange={(e) => setLocation(e.target.value)} 
-            />
-            <input 
-              placeholder="Paciente" 
-              value={patient} 
-              onChange={(e) => setPatient(e.target.value)} 
-            />
-            <input 
-              placeholder="Médico" 
-              value={doctor} 
-              onChange={(e) => setDoctor(e.target.value)} 
-            />
-          </div>  
-        </div>  
-        <div className="form-column">
-          <button type="submit" className="button">Crear Cita</button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function EventCard({ event }) {
-  <div key={event.id} className="calendar-event">
-    <div className="event-info">
-      <div clasName="event-left-info">
-        <div className="event-date">{event.date}</div>
-        <div className="event-time">{event.time}</div>
-      </div>
-      <div className="event-right-info">
-        <div className="event-title"><strong>{event.title}</strong></div>
-        <div className="event-duration"><strong>Duración:</strong> {event.duration}</div>
-        <div className="event-right-subinfo">
-          <div className="event-location"><strong>Lugar:</strong> {event.location}</div>
-          <div className="event-doctor"><strong>Médico:</strong> {event.doctor}</div>
-        </div>
-      </div>
-    </div>
-    {event.status === 'Pendiente' ? (renderDoctorButtons(event)) : null }
-  </div>
-}
+import { EventCreator, EventCard } from './CalendarHelper';
 
 export default function DoctorCalendarPage() {
-  const [userProfile, setUserProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { userProfile, loading } = useUser();
   const [error, setError] = useState(null);
   const { getAccessTokenSilently } = useAuth0();
-  
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const token = await getAccessTokenSilently();
-        const data = await getUserWithRole(token);
-        setUserProfile(data);
-      } catch (err) {
-        console.error("Error al obtener el perfil:", err);
-        setError("No se pudo cargar el perfil. Reintenta iniciar sesión.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, [getAccessTokenSilently]);
 
     // Aca en teoría el doctor ve los datos de el paciente seleccionado
   const [dates, setDates] = useState([
@@ -151,37 +37,11 @@ export default function DoctorCalendarPage() {
     return (
       <div className="calendar-events">
         {eventsList.map((event) => (
-            EventCard({ event })
+            <EventCard event={event} role={userProfile.role} />
         ))}
       </div>
     );
   }
-
-  const renderReminder = (reminder, status) => {
-    if (reminder == "" || status != "Pendiente") { 
-      return;
-    }
-    return (<div className="event-reminder"><strong>Recordatorio:</strong> {reminder}</div>);
-  }
-
-  const renderDoctorButtons = (event) => {
-    return (
-      <div className="doctor-actions">
-        <button 
-          className="button-complete" 
-          onClick={() => { setSelectedEvent(event); setShowCompleteModal(true); }}
-        >
-          Completar
-        </button>
-        <button 
-          className="button-cancel-outline" 
-          onClick={() => { setSelectedEvent(event); setShowCancelConfirm(true); }}
-        >
-          Cancelar
-        </button>
-      </div>
-    );
-  };
 
   if (loading) return <div className="messages-page">Cargando perfil...</div>;
   
@@ -190,22 +50,19 @@ export default function DoctorCalendarPage() {
   return (
     <div className="calendar-container">
       <h1>Calendario</h1>
+      <EventCreator 
+        onCreate={(newEvent) => {
+          const newEventWithId = { 
+            ...newEvent, 
+            id: Date.now(), 
+            status: "Pendiente", 
+            reminder: "" 
+          };
+        setDates(prev => [...prev, newEventWithId]);
+      }} 
+    />
 
-      {user.role === 'Doctor' && (
-        <EventCreator 
-          onCreate={(newEvent) => {
-            const newEventWithId = { 
-              ...newEvent, 
-              id: Date.now(), 
-              status: "Pendiente", 
-              reminder: "" 
-            };
-            setDates(prev => [...prev, newEventWithId]);
-          }} 
-        />
-      )}
-
-      <div className="calendar-subtitle">Próximas Citas y Controles Programados</div>
+    <div className="calendar-subtitle">Próximas Citas y Controles Programados</div>
       <div className="appointments-container">
 
         <section className="events-upcoming">
@@ -217,7 +74,7 @@ export default function DoctorCalendarPage() {
           <div className="events-header">Citas Pendientes ({pending.length})</div>
           {renderEventsList(pending)}
         </section>
-        
+          
         <section className="events-completed">
           <div className="events-header">Citas Completadas ({completed.length})</div>
           {renderEventsList(completed)}

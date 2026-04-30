@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Upload, FileText, AlertCircle, Clock, ChevronRight, ExternalLink } from "lucide-react";
+import { useUser } from '../../services/UserContext';
 import './Documents.css';
 
 export default function Documents() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const { userProfile, loading } = useUser();
 
     const fixedExamTypes = [
         "Exámenes de laboratorio",
@@ -34,7 +36,11 @@ export default function Documents() {
         <div className="documents-container">
             <header className="documents-header">
                 <div>
-                    <h1>Mis Documentos Médicos</h1>
+                    {userProfile?.role === 'professional' ? (
+                        <h1 className="documents-title">Documentos de Roberto Roberts</h1>
+                    ) : (
+                        <h1 className="documents-title">Mis Documentos Médicos</h1>
+                    )}
                     <p className="documents-subtitle">Gestiona tus exámenes obligatorios y documentos adicionales.</p>
                 </div>
                 <button className="documents-upload-button" onClick={() => setIsPanelOpen(true)}>

@@ -14,13 +14,6 @@ import {
 
 import "./PatientProfilePage.css";
 
-const displayValue = (value) => {
-  if (value === null || value === undefined || value === "" || value === "-") {
-    return "No hay registro de datos";
-  }
-  return value;
-};
-
 export default function PatientProfilePage() {
   const { getAccessTokenSilently } = useAuth0();
 
@@ -36,13 +29,6 @@ export default function PatientProfilePage() {
         const token = await getAccessTokenSilently();
         const data = await getPatientProfile(token);
 
-        const profile =
-          data.profile ||
-          data.patient_profile ||
-          data.PatientProfile ||
-          data.patientProfile ||
-          {};
-
         const patientUuid = data.profile?.id ?? data.id;
 
         const [weightHistoryData, physicalActivitiesData] = await Promise.all([
@@ -52,12 +38,15 @@ export default function PatientProfilePage() {
 
         setPatient({
           id: data.id,
+          profileId: data.profile?.id,
           name: data.full_name || data.fullName || "Sin nombre",
           email: data.email,
-          phone: profile.phone_number || profile.phoneNumber || "No registrado",
-          birthDate: profile.birth_date || profile.birthDate || "No registrado",
-          healthInsurance:
-            profile.health_insurance || profile.healthInsurance || "No registrado",
+          phone:
+            data.profile?.phone_number ||
+            data.profile?.phone_numder ||
+            "No registrado",
+          birthDate: data.profile?.birth_date || "No registrado",
+          healthInsurance: data.profile?.health_insurance || "No registrado",
           status: "Seguimiento Activo",
         });
 
@@ -197,7 +186,7 @@ function MiniStatsRow({
           </div>
 
           <p>{stat.title}</p>
-          <h3>{displayValue(stat.value)}</h3>
+          <h3>{stat.value}</h3>
           <span>{stat.helper}</span>
         </Card>
       ))}
@@ -240,19 +229,19 @@ function ClinicalSummaryCard({
       <div className="stats-list">
         <div className="stats-list-item">
           <span>Peso actual</span>
-          <span>{displayValue(weightStats.currentWeight)}</span>
+          <span>{weightStats.currentWeight}</span>
         </div>
         <div className="stats-list-item">
           <span>Cambio total</span>
-          <span>{displayValue(weightStats.totalLoss)}</span>
+          <span>{weightStats.totalLoss}</span>
         </div>
         <div className="stats-list-item">
           <span>Actividad física</span>
-          <span>{displayValue(physicalActivityStats.totalActivities)} registros</span>
+          <span>{physicalActivityStats.totalActivities} registros</span>
         </div>
         <div className="stats-list-item">
           <span>Adherencia promedio</span>
-          <span>{displayValue(averageAdherence)}%</span>
+          <span>{averageAdherence}%</span>
         </div>
       </div>
     </Card>
@@ -265,7 +254,7 @@ function InfoRow({ icon, label, value }) {
       {icon}
       <div>
         <span>{label}</span>
-        <p>{displayValue(value)}</p>
+        <p>{value || "No registrado"}</p>
       </div>
     </div>
   );

@@ -33,7 +33,6 @@ const patientLinks = [
 
 
 
-
 export default function DashboardLayout() {
   const [patientSearch, setPatientSearch] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);

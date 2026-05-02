@@ -30,7 +30,7 @@ import { useUser } from "../services/UserContext";
 function RoleRedirect() {
   const { userProfile, loading } = useUser();
 
-  if (loading || !userProfile) return <p>Cargando...</p>;
+  if (loading) return <p>Cargando...</p>;
 
   const role = userProfile?.role;
 

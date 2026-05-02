@@ -4,11 +4,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { User, Phone, ArrowLeft, CreditCard, CalendarDays, Shield } from "lucide-react";
 import { syncUser } from "../services/authService";
 import "./Auth.css";
+import { useUser } from "../services/UserContext";
 import logo from "../assets/logo.png";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const { user, getAccessTokenSilently } = useAuth0();
+  const { reload } = useUser();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -59,6 +61,8 @@ export default function RegisterPage() {
         phone_number: formData.phone_number,
         health_insurance: formData.health_insurance,
       });
+
+      await reload();
 
       navigate("/dashboard", { replace: true });
     } catch (err) {

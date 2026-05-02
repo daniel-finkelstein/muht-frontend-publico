@@ -1,24 +1,11 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useUser } from "../services/UserContext";
-
-// export default function ProtectedRoute({ children }) {
-//   const { isAuthenticated, isLoading } = useAuth0();
-
-//   if (isLoading) {
-//     return <p style={{ padding: "24px" }}>Cargando...</p>;
-//   }
-
-//   if (!isAuthenticated) {
-//     return <Navigate to="/login" replace />;
-//   }
-
-//   return children;
-// }
 
 export default function ProtectedRoute({ allowedRoles, children }) {
   const { isAuthenticated, isLoading } = useAuth0();
   const { userProfile, loading } = useUser();
+  const location = useLocation();
 
   if (isLoading || loading) {
     return <p>Cargando...</p>;
@@ -29,11 +16,11 @@ export default function ProtectedRoute({ allowedRoles, children }) {
   }
 
   if (!userProfile) {
-    return <Navigate to="/register" replace />;
+    return <Navigate to="/register" replace state={{ from: location }} />;
   }
 
   if (!userProfile.role) {
-    return <Navigate to="/register" replace />;
+    return <Navigate to="/register" replace state={{ from: location }} />;
   }
 
   if (allowedRoles && !allowedRoles.includes(userProfile.role)) {
